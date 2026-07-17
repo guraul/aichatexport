@@ -1,3 +1,4 @@
 node_modules/
 tools/node_modules/
 .chatglm-export/
+raw/

@@ -9,9 +9,9 @@ Production. All 221 conversations from chatglm.cn successfully exported to `~/ra
 - **Playwright** (Node.js, no build tooling, no tests) running Chromium via `/snap/bin/chromium`
 - **API interception** (not DOM extraction) — Playwright listens for the page's own `/conversation/messages` HTTP response
 - **Vue Router navigation** (not DOM click) — navigates directly via `router.push({ path: '/alltoolsdetail', query: { cid } })`
-- Output: Markdown with YAML frontmatter, saved to `~/raw/inbox/` via `fs.writeFileSync`
-- Session: `~/.config/chatglm_session.json` (Playwright `storageState`)
-- Config / progress: `~/.config/chatglm-export/{config,conversations}.json`
+- Output: Markdown with YAML frontmatter, saved to `raw/inbox/` (project root) via `fs.writeFileSync`
+- Session: `.chatglm-export/chatglm_session.json` (Playwright `storageState`)
+- Config / progress: `.chatglm-export/{config,conversations}.json`
 
 ## Key files
 

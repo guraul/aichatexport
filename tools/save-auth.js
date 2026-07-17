@@ -1,13 +1,11 @@
 import { chromium } from 'playwright';
 import { writeFileSync, mkdirSync } from 'fs';
-import { homedir } from 'os';
 import { join, resolve } from 'path';
 
-const AUTH_FILE = process.env.CHATGLM_AUTH || join(homedir(), '.config', 'chatglm_session.json');
+const PROJECT_DIR = resolve(import.meta.dirname, '..');
+const AUTH_FILE = process.env.CHATGLM_AUTH || join(PROJECT_DIR, '.chatglm-export', 'chatglm_session.json');
 
-try {
-  mkdirSync(join(homedir(), '.config'), { recursive: true });
-} catch { /* exists */ }
+mkdirSync(join(PROJECT_DIR, '.chatglm-export'), { recursive: true });
 
 const browser = await chromium.launch({ headless: false });
 const context = await browser.newContext();

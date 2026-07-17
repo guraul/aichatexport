@@ -1,18 +1,17 @@
 import { chromium } from 'playwright';
 import fs from 'fs';
 import path from 'path';
-import os from 'os';
 
 const PROJECT_DIR = path.resolve(import.meta.dirname, '..');
 const CONFIG_DIR = path.join(PROJECT_DIR, '.chatglm-export');
 const CONFIG_PATH = path.join(CONFIG_DIR, 'config.json');
 const CONVERSATIONS_PATH = path.join(CONFIG_DIR, 'conversations.json');
-const SESSION_PATH = path.join(os.homedir(), '.config', 'chatglm_session.json');
+const SESSION_PATH = path.join(PROJECT_DIR, '.chatglm-export', 'chatglm_session.json');
 
 function loadConfig() {
   const p = process.env.CONFIG_PATH || CONFIG_PATH;
   if (!fs.existsSync(p)) {
-    const c = { outputDir: path.join(os.homedir(), 'raw', 'inbox'), requestTimeoutMs: 120000 };
+    const c = { outputDir: path.join(PROJECT_DIR, 'raw', 'inbox'), requestTimeoutMs: 120000 };
     fs.mkdirSync(path.dirname(p), { recursive: true });
     fs.writeFileSync(p, JSON.stringify(c, null, 2));
     console.log(`已创建默认配置: ${p}`);
