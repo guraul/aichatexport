@@ -3,7 +3,8 @@ import fs from 'fs';
 import path from 'path';
 import os from 'os';
 
-const CONFIG_DIR = path.join(os.homedir(), '.config', 'chatglm-export');
+const PROJECT_DIR = path.resolve(import.meta.dirname, '..');
+const CONFIG_DIR = path.join(PROJECT_DIR, '.chatglm-export');
 const CONFIG_PATH = path.join(CONFIG_DIR, 'config.json');
 const CONVERSATIONS_PATH = path.join(CONFIG_DIR, 'conversations.json');
 const SESSION_PATH = path.join(os.homedir(), '.config', 'chatglm_session.json');
